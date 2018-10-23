@@ -108,24 +108,27 @@
 
 
 
-  <meta name="description" content="jocelen个人博客">
+  <meta name="description" content="1 为什么要合并?1.1 了解CPU指令集 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含 i386｜x86_64 是iOS模拟器的指令集  因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候">
 <meta name="keywords" content="jocelen">
-<meta property="og:type" content="website">
-<meta property="og:title" content="波大王">
-<meta property="og:url" content="https://blog.jocelen.xyz/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试文章">
+<meta property="og:url" content="https://blog.jocelen.xyz/2018/10/22/测试文章/index.html">
 <meta property="og:site_name" content="波大王">
-<meta property="og:description" content="jocelen个人博客">
+<meta property="og:description" content="1 为什么要合并?1.1 了解CPU指令集 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含 i386｜x86_64 是iOS模拟器的指令集  因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2068442-6174f5acae9a9c41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-23T01:40:47.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="波大王">
-<meta name="twitter:description" content="jocelen个人博客">
+<meta name="twitter:title" content="测试文章">
+<meta name="twitter:description" content="1 为什么要合并?1.1 了解CPU指令集 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含 i386｜x86_64 是iOS模拟器的指令集  因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2068442-6174f5acae9a9c41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
 
 
 
-  <link rel="canonical" href="https://blog.jocelen.xyz/"/>
+  <link rel="canonical" href="https://blog.jocelen.xyz/2018/10/22/测试文章/"/>
 
 
 
@@ -135,7 +138,7 @@
   };
 </script>
 
-  <title>波大王</title>
+  <title>测试文章 | 波大王</title>
   
 
 
@@ -182,8 +185,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -224,7 +226,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
@@ -268,9 +270,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -302,11 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/22/测试文章/" itemprop="url">
-                  测试文章
-                </a>
+          <h1 class="post-title" itemprop="name headline">测试文章
               
             
           </h1>
@@ -381,9 +379,7 @@
       
 
       
-        
-          
-            <h2 id="1-为什么要合并"><a href="#1-为什么要合并" class="headerlink" title="1 为什么要合并?"></a>1 为什么要合并?</h2><h4 id="1-1-了解CPU指令集"><a href="#1-1-了解CPU指令集" class="headerlink" title="1.1 了解CPU指令集"></a>1.1 了解<a href="http://www.cocoachina.com/ios/20140915/9620.html" target="_blank" rel="noopener">CPU指令集</a></h4><ul>
+        <h2 id="1-为什么要合并"><a href="#1-为什么要合并" class="headerlink" title="1 为什么要合并?"></a>1 为什么要合并?</h2><h4 id="1-1-了解CPU指令集"><a href="#1-1-了解CPU指令集" class="headerlink" title="1.1 了解CPU指令集"></a>1.1 了解<a href="http://www.cocoachina.com/ios/20140915/9620.html" target="_blank" rel="noopener">CPU指令集</a></h4><ul>
 <li>armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含</li>
 <li>i386｜x86_64 是iOS模拟器的指令集</li>
 </ul>
@@ -405,8 +401,6 @@
 <p>Project –&gt; TARGETS –&gt; Build Phases -&gt; <strong>+</strong> –&gt; New Run Script Phases 添加执行脚本,如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># Type a script or drag a script file from your workspace to insert its path.</span><br><span class="line">if [ &quot;$&#123;ACTION&#125;&quot; = &quot;build&quot; ]</span><br><span class="line">then</span><br><span class="line">INSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;PROJECT_NAME&#125;.framework</span><br><span class="line"></span><br><span class="line">DEVICE_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;PROJECT_NAME&#125;.framework</span><br><span class="line"></span><br><span class="line">SIMULATOR_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;PROJECT_NAME&#125;.framework</span><br><span class="line"></span><br><span class="line"># 如果真机包或模拟包不存在，则退出合并</span><br><span class="line">if [ ! -d &quot;$&#123;DEVICE_DIR&#125;&quot; ] || [ ! -d &quot;$&#123;SIMULATOR_DIR&#125;&quot; ]</span><br><span class="line">then</span><br><span class="line">exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 如果合并包已经存在，则替换</span><br><span class="line">if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]</span><br><span class="line">then</span><br><span class="line">rm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">mkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;</span><br><span class="line"></span><br><span class="line">cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;</span><br><span class="line"></span><br><span class="line"># 使用lipo命令将其合并成一个通用framework  </span><br><span class="line"># 最后将生成的通用framework放置在工程根目录下新建的Products目录下  </span><br><span class="line">lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot;</span><br><span class="line"></span><br><span class="line">#合并完成后打开目录</span><br><span class="line">open &quot;$&#123;SRCROOT&#125;/Products&quot;</span><br><span class="line"></span><br><span class="line">fi</span><br></pre></td></tr></table></figure></p>
 <p><strong>注意: 只有在<code>真机</code>,<code>模拟器</code>各编译一次后,才会在工程/Products目录下生产合并包,如不希望自动打开目录,注释掉最后一句<code>#open &quot;${SRCROOT}/Products&quot;</code>即可</strong></p>
 
-          
-        
       
     </div>
 
@@ -426,156 +420,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.jocelen.xyz/2018/10/09/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jocelen">
-      <meta itemprop="description" content="jocelen个人博客">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="波大王">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
+              <a href="/2018/10/09/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-09 16:48:39" itemprop="dateCreated datePublished" datetime="2018-10-09T16:48:39+08:00">2018-10-09</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -585,158 +451,15 @@
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.jocelen.xyz/2018/10/09/hello-world2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jocelen">
-      <meta itemprop="description" content="jocelen个人博客">
-      <meta itemprop="image" content="/uploads/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="波大王">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/hello-world2/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-09 16:48:39" itemprop="dateCreated datePublished" datetime="2018-10-09T16:48:39+08:00">2018-10-09</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -757,8 +480,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -810,6 +542,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么要合并"><span class="nav-number">1.</span> <span class="nav-text">1 为什么要合并?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-了解CPU指令集"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.1 了解CPU指令集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-手动合并"><span class="nav-number">2.</span> <span class="nav-text">2 手动合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-了解-lipo-命令"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.1 了解 lipo 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-在终端运行-lipo-info-PATH-查看framework格式"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">2.2 在终端运行 lipo - info PATH 查看framework格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-通过-lipo-info-分辨framework类型后，下面进行合并"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">2.3 通过 lipo - info 分辨framework类型后，下面进行合并</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-自动合并"><span class="nav-number">3.</span> <span class="nav-text">3 自动合并</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-了解-Shell脚本"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 了解 Shell脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-在Xcode中添加执行脚本"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 在Xcode中添加执行脚本</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -956,6 +704,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
