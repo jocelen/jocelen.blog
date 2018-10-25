@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /uploads/
+Disallow: /images/
+
+Sitemap: https://blog.jocelen.xyz/sitemap.xml
+Sitemap: https://blog.jocelen.xyz/baidusitemap.xml
