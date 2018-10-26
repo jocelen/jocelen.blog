@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[测试文章]]></title>
+    <url>%2F4131%2F</url>
+    <content type="text"><![CDATA[为什么要合并?了解CPU指令集 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含 i386｜x86_64 是iOS模拟器的指令集 因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候会被拒绝 手动合并了解 lipo 命令在终端运行 lipo - info PATH 查看framework格式注意: framework的路径是 xxxx/ProjectName.framework/ProjcetName 直接使用 xxxx/ProjectName.framework 会报错 lipo: can&#39;t map input file 如果控制台输出 Architectures in the fat file:xxxx/ProjectName.framework/ProjcetName are: armv7 arm64 ,则该framework是真机包.i386 x86_64,则是模拟器包 通过 lipo - info 分辨framework类型后，下面进行合并在终端运行 lipo - create PATH1 PATH2 -output PATH3 合并framework注意: 两个framework的路径之间的空格,以及目的文件的名称lipo -create xxxx/ProjectName.framework/ProjcetName xxxx/ProjectName.framework/ProjcetName -output xxxx/ProjectName.framework 两个 xxxx/ProjectName.framework/ProjcetName之间没打空格 会报错 lipo: can&#39;t open input file 合成framework路径没有命名 会报错 lipo: can&#39;t move temporary file 真机包和模拟器包合并完成以后包含两种指令集就算合并成功,结果如下:123lipo -info /Users/jocelen/Desktop/QuoteSDK-Demo/DZKJQuoteModule.framework/DZKJQuoteModuleArchitectures in the fat file: /Users/jocelen/Desktop/QuoteSDK-Demo/DZKJQuoteModule.framework/DZKJQuoteModule are: x86_64 armv7 arm64 自动合并每次合并都要打开终端用lipo 命令很麻烦? 下面介绍用Shell实现的自动合并脚本 了解 Shell脚本学习基本语法 在Xcode中添加执行脚本 Project –&gt; TARGETS –&gt; Build Phases -&gt; + –&gt; New Run Script Phases 添加执行脚本,如下:123456789101112131415161718192021222324252627282930313233# Type a script or drag a script file from your workspace to insert its path.if [ &quot;$&#123;ACTION&#125;&quot; = &quot;build&quot; ]thenINSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;PROJECT_NAME&#125;.frameworkDEVICE_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;PROJECT_NAME&#125;.frameworkSIMULATOR_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;PROJECT_NAME&#125;.framework# 如果真机包或模拟包不存在，则退出合并if [ ! -d &quot;$&#123;DEVICE_DIR&#125;&quot; ] || [ ! -d &quot;$&#123;SIMULATOR_DIR&#125;&quot; ]thenexit 0fi# 如果合并包已经存在，则替换if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]thenrm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;fimkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;# 使用lipo命令将其合并成一个通用framework # 最后将生成的通用framework放置在工程根目录下新建的Products目录下 lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot;#合并完成后打开目录open &quot;$&#123;SRCROOT&#125;/Products&quot;fi 注意: 只有在真机,模拟器各编译一次后,才会在工程/Products目录下生产合并包,如不希望自动打开目录,注释掉最后一句#open &quot;${SRCROOT}/Products&quot;即可]]></content>
+      <categories>
+        <category>测试文章</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F16107%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>个人博客</category>
+      </categories>
+      <tags>
+        <tag>范例</tag>
+      </tags>
+  </entry>
+</search>
