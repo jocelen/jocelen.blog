@@ -26,6 +26,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -49,6 +56,10 @@
 
 
 
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -87,7 +98,7 @@
     scheme: 'Pisces',
     version: '6.4.2',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -258,14 +269,6 @@
         
         
           
-          <li class="menu-item menu-item-sitemap">
-    <a href="/sitemap.xml" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
-  </li>
-        
-        
-        
-          
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
@@ -365,22 +368,6 @@
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-25 18:28:37" itemprop="dateModified" datetime="2018-10-25T18:28:37+08:00">2018-10-25</time>
-              
-            
           </span>
 
           
@@ -418,6 +405,17 @@
           
 
           
+          
+             <span id="/4131/" class="leancloud_visitors" data-flag-title="测试文章">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -605,7 +603,7 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/\/index.html">
+                  <a href="/tags/index.html">
                     
                     
                       
@@ -618,9 +616,9 @@
                 </div>
               
             </nav>
-	    <!-- 自动播放音乐 -->
+	    <!-- 自动播放音乐 
 	    <audio autoplay="autoplay" src="/uploads/bgm.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" loop="loop" preload="meta">Your browser does not support the audio tag.</audio>
-
+      -->
           
 
           
@@ -761,6 +759,8 @@
 
 
 
+  
+
 
 
 
@@ -788,6 +788,11 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
@@ -857,7 +862,7 @@
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: false
+        visitor: true
     });
 
   //新增以下代码即可，可以移除.info下所有子节点。

@@ -26,6 +26,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -49,6 +56,10 @@
 
 
 
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -87,7 +98,7 @@
     scheme: 'Pisces',
     version: '6.4.2',
     sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -256,14 +267,6 @@
         
         
           
-          <li class="menu-item menu-item-sitemap">
-    <a href="/sitemap.xml" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
-  </li>
-        
-        
-        
-          
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
@@ -367,22 +370,6 @@
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-25 18:28:37" itemprop="dateModified" datetime="2018-10-25T18:28:37+08:00">2018-10-25</time>
-              
-            
           </span>
 
           
@@ -421,6 +408,17 @@
 
           
           
+             <span id="/4131/" class="leancloud_visitors" data-flag-title="测试文章">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -447,7 +445,8 @@
 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含
 i386｜x86_64 是iOS模拟器的指令集
 
-因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机
+因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候会被拒绝
+手动合并了解 lipo 命令在终端运行 lipo - info PATH 查看framework格式注意: framework的路径是 xxxx/ProjectName.framework/Projce
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -557,22 +556,6 @@ i386｜x86_64 是iOS模拟器的指令集
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-25 18:28:21" itemprop="dateModified" datetime="2018-10-25T18:28:21+08:00">2018-10-25</time>
-              
-            
           </span>
 
           
@@ -611,6 +594,17 @@ i386｜x86_64 是iOS模拟器的指令集
 
           
           
+             <span id="/16107/" class="leancloud_visitors" data-flag-title="Hello World">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
@@ -633,7 +627,11 @@ i386｜x86_64 是iOS模拟器的指令集
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: Writing
+Run server1$ hexo server
+More in
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -752,7 +750,7 @@ i386｜x86_64 是iOS模拟器的指令集
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/\/index.html">
+                  <a href="/tags/index.html">
                     
                     
                       
@@ -765,9 +763,9 @@ i386｜x86_64 是iOS模拟器的指令集
                 </div>
               
             </nav>
-	    <!-- 自动播放音乐 -->
+	    <!-- 自动播放音乐 
 	    <audio autoplay="autoplay" src="/uploads/bgm.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" loop="loop" preload="meta">Your browser does not support the audio tag.</audio>
-
+      -->
           
 
           
@@ -892,6 +890,8 @@ i386｜x86_64 是iOS模拟器的指令集
 
 
 
+  
+
 
 
 
@@ -919,6 +919,11 @@ i386｜x86_64 是iOS模拟器的指令集
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
 
 
@@ -984,7 +989,7 @@ i386｜x86_64 是iOS模拟器的指令集
         avatar:'mm',
         meta:guest,
         pageSize:'10' || 10,
-        visitor: false
+        visitor: true
     });
 
   //新增以下代码即可，可以移除.info下所有子节点。
