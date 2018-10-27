@@ -1,4 +1,4 @@
-/* 鼠标特效 爱心 */ 
+/* 鼠标切换 绘制随机不规则三角彩条 */ 
     document.addEventListener('touchmove', function (e) {
         e.preventDefault()
     })

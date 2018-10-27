@@ -119,18 +119,20 @@
 
 
 
-  <meta name="description" content="iOSCoder EVAFans  E-mail jocelen@163.com                                                      var ap = new APlayer({             element: document.getElementById(&quot;aplayer-vEvvgFya&quot;),             narr">
+  <meta name="description" content="iOSCoder EVAFans  E-mail jocelen@163.com             			   				  var options = {&quot;narrow&quot;:false,&quot;autoplay&quot;:true,&quot;showlrc&quot;:3,&quot;mutex&quot;:true,&quot;music&quot;:[{&quot;title&quot;:&quot;翼をください&quot;,&quot;author&quot;:&quot;徳永英明&quot;,&quot;url&quot;:&quot;/uploads/bgm">
 <meta name="keywords" content="jocelen">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About Me">
 <meta property="og:url" content="https://blog.jocelen.xyz/about/index.html">
 <meta property="og:site_name" content="波大王">
-<meta property="og:description" content="iOSCoder EVAFans  E-mail jocelen@163.com                                                      var ap = new APlayer({             element: document.getElementById(&quot;aplayer-vEvvgFya&quot;),             narr">
+<meta property="og:description" content="iOSCoder EVAFans  E-mail jocelen@163.com             			   				  var options = {&quot;narrow&quot;:false,&quot;autoplay&quot;:true,&quot;showlrc&quot;:3,&quot;mutex&quot;:true,&quot;music&quot;:[{&quot;title&quot;:&quot;翼をください&quot;,&quot;author&quot;:&quot;徳永英明&quot;,&quot;url&quot;:&quot;/uploads/bgm">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-27T02:28:16.652Z">
+<meta property="og:image" content="https://blog.jocelen.xyz/uploads/avatar.jpeg">
+<meta property="og:updated_time" content="2018-10-27T07:41:50.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="iOSCoder EVAFans  E-mail jocelen@163.com                                                      var ap = new APlayer({             element: document.getElementById(&quot;aplayer-vEvvgFya&quot;),             narr">
+<meta name="twitter:description" content="iOSCoder EVAFans  E-mail jocelen@163.com             			   				  var options = {&quot;narrow&quot;:false,&quot;autoplay&quot;:true,&quot;showlrc&quot;:3,&quot;mutex&quot;:true,&quot;music&quot;:[{&quot;title&quot;:&quot;翼をください&quot;,&quot;author&quot;:&quot;徳永英明&quot;,&quot;url&quot;:&quot;/uploads/bgm">
+<meta name="twitter:image" content="https://blog.jocelen.xyz/uploads/avatar.jpeg">
 
 
 
@@ -190,6 +192,8 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+<canvas id="evanyou-canvas" width="2716" height="1330" style="position: absolute; top: 0px; left: 0px; z-index: 0; width: 100%; pointer-events: none;"></canvas>
 
   
   
@@ -391,27 +395,14 @@
 </ul>
 <!-- 自动播放音乐 -->
 
-        <div id="aplayer-vEvvgFya" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;width:100%;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-vEvvgFya"),
-            narrow: false,
-            autoplay: true,
-            showlrc: 3,
-            music: {
-              title: "翼をください",
-              author: "徳永英明",
-              url: "https://t1.aixinxi.net/o_1c3pt0b9v1i1eg03md8jt18kna.ogg",
-              pic: "/uploads/avatar.jpeg",
-              lrc: "https://t1.aixinxi.net/o_1c3pttc8b154g67r1bdtd0l1rvtc.txt"
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
-
+        <div id="aplayer-dtTSOurn" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;"></div>
+			  <script>
+				  var options = {"narrow":false,"autoplay":true,"showlrc":3,"mutex":true,"music":[{"title":"翼をください","author":"徳永英明","url":"/uploads/bgm.mp3","pic":"/uploads/bgm.jpeg","lrc":"/uploads/bgm.txt"}]};
+				  options.element = document.getElementById("aplayer-dtTSOurn");
+				  var ap = new APlayer(options);
+			    window.aplayers || (window.aplayers = []);
+				  window.aplayers.push(ap);
+			  </script>
         
       </div>
       
@@ -1103,7 +1094,7 @@
 <!-- 动态标题 -->
 <script type="text/javascript" src="/js/custom/dynamic_title.js"></script>
 <!-- 动态背景 -->
-<!-- <script type="text/javascript" src="/js/custom/click_background.js"></script> -->
+<script type="text/javascript" src="/js/custom/click_background.js"></script>
 <!-- 页面点击红心 -->
 <!-- <script type="text/javascript" src="/js/custom/click_loves.js"></script> -->
 <!-- 页面点击社会主义核心价值观 -->
