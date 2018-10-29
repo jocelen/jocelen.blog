@@ -9,7 +9,7 @@ function() {
         // 页面已完全加载
         if (document.hidden) {
             leaveTime = setTimeout(function() {
-            $('[rel="icon"]').attr('href', "/uploads/1024.ico");
+            $('[rel="icon"]').attr('href', "/uploads/icon/1024.ico");
             document.title = '草榴社區';
             },2500);
             
@@ -17,7 +17,7 @@ function() {
 
         } else {
 
-            $('[rel="icon"]').attr('href', "/uploads/swift.ico");
+            $('[rel="icon"]').attr('href', "/uploads/icon/swift.ico");
             document.title = ' 正经博客 ';
             enterTime = setTimeout(function() {
                 document.title = OriginTitile;

@@ -1,25 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[测试文章]]></title>
-    <url>%2F4131%2F</url>
-    <content type="text"><![CDATA[为什么要合并?了解CPU指令集 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含 i386｜x86_64 是iOS模拟器的指令集 因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候会被拒绝 手动合并了解 lipo 命令在终端运行 lipo - info PATH 查看framework格式注意: framework的路径是 xxxx/ProjectName.framework/ProjcetName 直接使用 xxxx/ProjectName.framework 会报错 lipo: can&#39;t map input file 如果控制台输出 Architectures in the fat file:xxxx/ProjectName.framework/ProjcetName are: armv7 arm64 ,则该framework是真机包.i386 x86_64,则是模拟器包 通过 lipo - info 分辨framework类型后，下面进行合并在终端运行 lipo - create PATH1 PATH2 -output PATH3 合并framework注意: 两个framework的路径之间的空格,以及目的文件的名称lipo -create xxxx/ProjectName.framework/ProjcetName xxxx/ProjectName.framework/ProjcetName -output xxxx/ProjectName.framework 两个 xxxx/ProjectName.framework/ProjcetName之间没打空格 会报错 lipo: can&#39;t open input file 合成framework路径没有命名 会报错 lipo: can&#39;t move temporary file 真机包和模拟器包合并完成以后包含两种指令集就算合并成功,结果如下:123lipo -info /Users/jocelen/Desktop/QuoteSDK-Demo/DZKJQuoteModule.framework/DZKJQuoteModuleArchitectures in the fat file: /Users/jocelen/Desktop/QuoteSDK-Demo/DZKJQuoteModule.framework/DZKJQuoteModule are: x86_64 armv7 arm64 自动合并每次合并都要打开终端用lipo 命令很麻烦? 下面介绍用Shell实现的自动合并脚本 了解 Shell脚本学习基本语法 在Xcode中添加执行脚本 Project –&gt; TARGETS –&gt; Build Phases -&gt; + –&gt; New Run Script Phases 添加执行脚本,如下:123456789101112131415161718192021222324252627282930313233# Type a script or drag a script file from your workspace to insert its path.if [ &quot;$&#123;ACTION&#125;&quot; = &quot;build&quot; ]thenINSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;PROJECT_NAME&#125;.frameworkDEVICE_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;PROJECT_NAME&#125;.frameworkSIMULATOR_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;PROJECT_NAME&#125;.framework# 如果真机包或模拟包不存在，则退出合并if [ ! -d &quot;$&#123;DEVICE_DIR&#125;&quot; ] || [ ! -d &quot;$&#123;SIMULATOR_DIR&#125;&quot; ]thenexit 0fi# 如果合并包已经存在，则替换if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]thenrm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;fimkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;# 使用lipo命令将其合并成一个通用framework # 最后将生成的通用framework放置在工程根目录下新建的Products目录下 lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot;#合并完成后打开目录open &quot;$&#123;SRCROOT&#125;/Products&quot;fi 注意: 只有在真机,模拟器各编译一次后,才会在工程/Products目录下生产合并包,如不希望自动打开目录,注释掉最后一句#open &quot;${SRCROOT}/Products&quot;即可]]></content>
+    <title><![CDATA[iOS 导入Framework 报错 Reason image not found]]></title>
+    <url>%2Fposts%2Fa754109c%2F</url>
+    <content type="text"><![CDATA[自己封装的SDK在导入测试项目的时候发现直接闪退了，报错如下： 12345dyld: Library not loaded: @rpath/DZKJQuoteModule.framework/DZKJQuoteModuleReferenced from: /Users/jocelen/Library/Developer/CoreSimulator/Devices/65C4E1C6-0601-4E8B-9011-E29B938BF09B/data/Containers/Bundle/Application/A15117A4-D048-4D73-A4EF-6349E0075721/test1.app/test1Reason: image not found 查阅资料后发现是bunlde资源未正确找到 解决办法如下: 依次打开：Targets–&gt;General–&gt;Embedded Binaries–&gt; + 添加自己导入的framework 即可正确找到资源路径]]></content>
       <categories>
-        <category>测试文章</category>
+        <category>iOS</category>
       </categories>
       <tags>
-        <tag>测试</tag>
+        <tag>iOS</tag>
+        <tag>Framework</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F16107%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[iOS xib view设置阴影失效问题]]></title>
+    <url>%2Fposts%2F7364d3f0%2F</url>
+    <content type="text"><![CDATA[设置阴影用代码设置xib中viw的阴影,本来就以为很简单的设置就完事了 C12345_contentView.layer.borderWidth = 0.7f;_contentView.layer.borderColor = g_sepLineColor.CGColor;_contentView.layer.shadowColor= [UIColor lightGrayColor].CGColor;_contentView.layer.shadowOpacity = 0.4f;_contentView.layer.shadowOffset = CGSizeMake(2, 2); 意外结果不仅没生效,反而还在子view中生效了找了半天才发现xib View默认颜色ClearColor,阴影不会生效 解决办法很简单，给xib View设置一个背景色就行了,但是不细细找的话也是很难发现的奇葩问题我的需求是边框加阴影, 如果还要加圆角的话 得把clipsToBounds关掉,不然阴影会被切割，导致不显示 1_contentView.clipsToBounds = NO;]]></content>
       <categories>
-        <category>个人博客</category>
+        <category>iOS</category>
       </categories>
       <tags>
-        <tag>范例</tag>
+        <tag>iOS</tag>
+        <tag>xib</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[iOS Framework合并]]></title>
+    <url>%2Fposts%2F7d593646%2F</url>
+    <content type="text"><![CDATA[为什么要合并?了解CPU指令集 armv7｜armv7s｜arm64都是ARM处理器的指令集,是真机所含 i386｜x86_64 是iOS模拟器的指令集 因为Framework的不同CPU指令集只能工作在对应的CPU上，所以本文目的就是将两种不同的framework合并,使其同时支持模拟器,和真机的运行注意:合并包只是方便开发调试,含有i386｜x86_64指令集的包在上架上传的时候会被拒绝 手动合并了解 lipo 命令查看framework格式 在终端运行 lipo - info PATH 注意: framework的路径是 xxxx/ProjectName.framework/ProjcetName 直接使用 xxxx/ProjectName.framework 会报错 lipo: can&#39;t map input file 如果控制台输出 Architectures in the fat file:xxxx/ProjectName.framework/ProjcetName are: armv7 arm64 ,则该framework是真机包.i386 x86_64,则是模拟器包 进行framework合并 在终端运行 lipo - create PATH1 PATH2 -output PATH3 注意: 两个framework的路径之间的空格,以及目的文件的名称 lipo -create xxxx/ProjectName.framework/ProjcetName xxxx/ProjectName.framework/ProjcetName -output xxxx/ProjectName.framework 两个 xxxx/ProjectName.framework/ProjcetName之间没打空格 会报错 lipo: can&#39;t open input file 合成framework路径没有命名 会报错 lipo: can&#39;t move temporary file 真机包和模拟器包合并完成以后包含两种指令集就算合并成功,结果如下:123lipo -info /Users/jocelen/Desktop/QuoteSDK-Demo/DZKJQuoteModule.framework/DZKJQuoteModuleArchitectures in the fat file: /Users/jocelen/Desktop/QuoteSDK-Demo/DZKJQuoteModule.framework/DZKJQuoteModule are: x86_64 armv7 arm64 自动合并每次合并都要打开终端用lipo 命令很麻烦? 下面介绍用Shell实现的自动合并脚本 了解 Shell脚本学习基本语法 在Xcode中添加执行脚本 Project –&gt; TARGETS –&gt; Build Phases -&gt; + –&gt; New Run Script Phases 添加执行脚本,如下:123456789101112131415161718192021222324252627282930313233# Type a script or drag a script file from your workspace to insert its path.if [ "$&#123;ACTION&#125;" = "build" ]thenINSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;PROJECT_NAME&#125;.frameworkDEVICE_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;PROJECT_NAME&#125;.frameworkSIMULATOR_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;PROJECT_NAME&#125;.framework# 如果真机包或模拟包不存在，则退出合并if [ ! -d "$&#123;DEVICE_DIR&#125;" ] || [ ! -d "$&#123;SIMULATOR_DIR&#125;" ]thenexit 0fi# 如果合并包已经存在，则替换if [ -d "$&#123;INSTALL_DIR&#125;" ]thenrm -rf "$&#123;INSTALL_DIR&#125;"fimkdir -p "$&#123;INSTALL_DIR&#125;"cp -R "$&#123;DEVICE_DIR&#125;/" "$&#123;INSTALL_DIR&#125;/"# 使用lipo命令将其合并成一个通用framework # 最后将生成的通用framework放置在工程根目录下新建的Products目录下 lipo -create "$&#123;DEVICE_DIR&#125;/$&#123;PROJECT_NAME&#125;" "$&#123;SIMULATOR_DIR&#125;/$&#123;PROJECT_NAME&#125;" -output "$&#123;INSTALL_DIR&#125;/$&#123;PROJECT_NAME&#125;"#合并完成后打开目录open "$&#123;SRCROOT&#125;/Products"fi 注意: 只有在真机,模拟器各编译一次后,才会在工程/Products目录下生产合并包,如不希望自动打开目录,注释掉最后一句#open &quot;${SRCROOT}/Products&quot;即可]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>Framework</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MAC终端 SSH登陆 Enter passphrase for key]]></title>
+    <url>%2Fposts%2Ffbf618ca%2F</url>
+    <content type="text"><![CDATA[需求:SSH免密码登陆利用ssh-keygen -t rsa -b 4096 -C &quot;xxx@xxx.com&quot;生成公,私钥的时候设置私钥密码,导致ssh免登录设置完成后一直需要输入私钥密码，才能链接SSH服务端，非常不方便1Enter passphrase for key &apos;~/.ssh/id_rsa&apos;: 解决:第一步:将私钥添加到钥匙串中，按照提示输入私钥密码1ssh-add -K ~/.ssh/id_rsa 第二步:在.ssh文件夹下config文件中配置服务器属性,UseKeychain，AddKeysToAgent设置为YES如果没有该文件,就创建一个配置好以后 直接用 ssh name 就可以免密访问服务器啦1234567891011vim /home/jocelen/.ssh/config*添加内容Host name User root Hostname xxx.xxx.xx Port 23 PreferredAuthentications publickey IdentityFile ~/.ssh/id_rsa UseKeychain yes AddKeysToAgent config参数解释 Host #主机名 User #访问账户 Hostname #ip或域名 Port #端口 PreferredAuthentications #优先认证方式 这里填publickey IdentityFile #本地私钥地址 UseKeychain #是否使用钥匙串 AddKeysToAgent #是否添加到钥匙串]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[iOS导入Framework报错 Reason no suitable image found Did find]]></title>
+    <url>%2Fposts%2F96bfefc8%2F</url>
+    <content type="text"><![CDATA[合并Framework后,导入报错自己合并真机模拟器的SDK后,在导入测试项目的时候发现直接闪退了，报错如下：12345dyld: Library not loaded: @rpath/libswiftCore.dylib Referenced from: /Users/jocelen/Library/Developer/CoreSimulator/Devices/E5532504-D375-4FCC-81A5-A46EA31BCB48/data/Containers/Bundle/Application/4413D938-4427-4B4D-8032-44A48643A0C7/QuoteSDK-Demo.app/Frameworks/DZKJQuoteModule.framework/DZKJQuoteModule Reason: no suitable image found. Did find: /Users/jocelen/Library/Developer/CoreSimulator/Devices/E5532504-D375-4FCC-81A5-A46EA31BCB48/data/Containers/Bundle/Application/4413D938-4427-4B4D-8032-44A48643A0C7/QuoteSDK-Demo.app/Frameworks/DZKJQuoteModule.framework/Frameworks/libswiftCore.dylib: no matching architecture in universal wrapper(lldb) 解决如下Targets–&gt;General–&gt;Always Embed Swift Standard Libraries–&gt;YES]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>Framework</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MAC终端 Error The following directories are not writable by your user]]></title>
+    <url>%2Fposts%2Fec9865ba%2F</url>
+    <content type="text"><![CDATA[Homebrew安装应用1brew install node 报权限错误1234Error: The following directories are not writable by your user:/usr/local/share/man/man8You should change the ownership of these directories to your user.sudo chown -R $(whoami) /usr/local/share/man/man8 解决办法收回权限后，即可正常下载 12sudo chown -R `whoami`:admin /usr/local/binsudo chown -R `whoami`:admin /usr/local/share]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Homebrew</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[MAC终端 ECDSA host key for [xx xx xx xx] xxxx has changed]]></title>
+    <url>%2Fposts%2F961a6c83%2F</url>
+    <content type="text"><![CDATA[终端登陆SSH1ssh root@xx.xx.xx.xx -p xxxx 登陆异常 抛错12345Add correct host key in /Users/jocelen/.ssh/known_hosts to get rid of this message.Offending ECDSA key in /Users/jocelen/.ssh/known_hosts:2ECDSA host key for [xx.xx.xx.xx]:xxxx has changed and you have requested strict checking. 解决办法原因:两次ssh连接的秘钥不匹配，处理:删除报错路径下 /Users/jocelen/.ssh/known_hosts:2 文件即]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux 文件操作(新增,复制,删除)]]></title>
+    <url>%2Fposts%2F2abb6b72%2F</url>
+    <content type="text"><![CDATA[mkdir、rmdirmkdir用来建立新的目录，rmdir用来删除已建立的目录：12mkdir testrmdir test rmdir 只能删除空文件夹若要删除非空的文件夹，可以使用rm命令，加rf两个选项，如：1rm -rf test rmrm用来删除文件的rm –r 目录名：这个操作可以连同这个目录下面的子目录都删除，功能上和rmdir相似。rm –f 文件名（目录名）：这个操作可以进行强制删除。1rm -rf test rm命令常用的参数有三个：123456-f, --force 忽略不存在的文件，从不给出提示。-i, --interactive 进行交互式删除-r, -R, --recursive 指示rm将参数中列出的全部目录和子目录均递归地删除。-v, --verbose 详细显示进行的步骤 --help 显示此帮助信息并退出 --version 输出版本信息并退出 cpcp用来复制文件，可以是单个文件复制也可以是整个目录复制。cp 文件名（目录名） 目标文件名（目标目录名）1cp -r test/ test1/ cp命令常用的参数有三个:12345-r 拷贝目录文件，将目录下的文件依序拷贝到目标目录中-f 如果目标文件中已经有相同的文件名存在，在复制前先将同名文件删除再进行复制-l 对源文件进行硬链接，而不复制文件-u源文件的Modification Time较目的文件有更新的时候，才会进行复制。-v 输出详细信息 scpscp命令可以实现本地与远程服务器之间的双向传输，本地文件可以传输到远程服务，也可以把远程服务器上的文件传输到本地，而且是加密的。scp [options] source dest 从服务器上下载文件scp username@servername:/path/filename /var/www/local_dir（本地目录）1scp root@xx.xx.xx.xx:/var/test.txt /var/www/local_dir 上传本地文件到服务器scp /path/filename username@servername:/path1scp /var/www/test.html root@xx.xx.xx.xx:/var/www/ 从服务器下载整个目录scp -r username@servername:/var/www/remote_dir（远程目录） /var/www/local_dir（本地目录）1scp -r -p 2333 root@xx.xx.xx.xx:/var/www/test /var/www/ /var/www/local_dir 上传本地文件到服务器scp -r local_dir username@servername:remote_dir1scp -r test.html root@xx.xx.xx.xx:/var/www/ 指定密钥文件这里指定了密钥文件id_rsa.1做为ssh的连接参数，不使用默认的密钥文件。1scp test.txt root@xx.xx.xx.xx:/home/ -i ~/.ssh/id_rsa.1 scp命令常用的参数有三个:-P 是端口号 放在 scp后面1234567-P 数据传输默认端口，默认是22-r 递归拷贝整个目录-i 指定密钥文件，参数直接传递给ssh使用-l 限定网速，以Kbit/s为单位-C 允许压缩-1,-2 强制scp命令使用ssh1或者ssh2协议-4,-6 使用ipv4或者ipv6寻址]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SQL-Server-While遍历日期]]></title>
+    <url>%2Fposts%2Ffa238eb2%2F</url>
+    <content type="text"><![CDATA[需求需要将一个时间段的天数全部遍历 了解While函数, dateadd()函数While{…}1234WHILE conditionBEGIN &#123;...statements...&#125;END; 当condition满足的时候,一直执行statements DATEADD(interval, number, date) interval 新增的单位时间,如年(year),月(month),日(day) number 新增的数量级 date 初始时间 实现12345678910111213141516171819declare @beg varchar(20),@end varchar(20)select @beg = '2016-11-01',@end = '2016-11-15'declare @begDate datetime = cast(@beg as datetime),@endDate datetime = cast(@end as datetime)if DATEDIFF(DAY,@begDate,@endDate) &lt; 0begin print '结束时间小于开始时间' return;endDECLARE @newDate datetimeselect @newDate = dateadd(day,0,@begDate)WHILE (DATEDIFF(DAY,@newDate,@endDate) &gt;=0 )begin print convert(varchar(20),@newDate,120) select @newDate = dateadd(day,1,@newDate)end]]></content>
+      <categories>
+        <category>SQLServer</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SQL Server STUFF函数,将返回结果集拼接成字符串]]></title>
+    <url>%2Fposts%2F31bdedbc%2F</url>
+    <content type="text"><![CDATA[需求需要将表格数据的备注信息还有价格信息拼接成字符串1select FeeDesc,APAmt,DocNo from ST_PayableRefDocs where DocNo = 'PM-180929-088' 了解STUFF函数利用STUFF将返回结果集 拼接成字符串1STUFF ( character_expression , start , length , character_expression ) character_expression 由字符数据组成的表达式。character_expression 可以是常量、变量，也可以是字符或二进制数据的列。可以嵌套字符串函数。 start 是一个整形值，指定删除和插入的开始位置。如果 start 或 length 是负数，则返回空字符串。如果 start 比第一个 character_expression 长，则返回空字符串。 length 是一个整数，指定要删除的字符数。如果 length 比第一个 character_expression 长，则最多删除到最后一个 character_expression 中的最后一个字符。 返回类型 如果 character_expression 是一个支持的字符数据类型，则返回字符数据。如果 character_expression 是一个支持的 binary 数据类型，则返回二进制数据。 示例下例通过在第一个字符串 (123456) 中删除从第二个位置（字符 b）开始的两个字符，然后在删除的起始位置插入第二个字符串，创建并返回一个字符串。1SELECT STUFF('123456', 2, 2, '789') 结果11789456 实现结果实现STUFF 函数select str = STUFF((SELECT DISTINCT( ‘我是分隔符1’ + ‘拼接参数1’ + ‘拼接参数2’ +’我是分隔符2’) FROM Table t WHERE “自定义条件” FOR XML PATH(‘’)),1, 1, ‘’) 实现语句1select str = STUFF((SELECT DISTINCT( ',' + FeeDesc + Rmrk +'\n') FROM ST_PayableRefDocs s WHERE s.DocNo='PM-170224-054' FOR XML PATH('')),1, 1, '') 得到结果 USB 64GB115.00 \n ,多USB插口45.00 \n ,空气清新剂25.90 \n ,配钥匙35.00 \n ,卫生纸37.80 \n]]></content>
+      <categories>
+        <category>SQLServer</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
 </search>
