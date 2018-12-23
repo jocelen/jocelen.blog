@@ -37,6 +37,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[MAC终端 SSH登陆 Enter passphrase for key]]></title>
+    <url>%2Fposts%2Ffbf618ca%2F</url>
+    <content type="text"><![CDATA[需求:SSH免密码登陆利用ssh-keygen -t rsa -b 4096 -C &quot;xxx@xxx.com&quot;生成公,私钥的时候设置私钥密码,导致ssh免登录设置完成后一直需要输入私钥密码，才能链接SSH服务端，非常不方便1Enter passphrase for key &apos;~/.ssh/id_rsa&apos;: 解决:第一步:将私钥添加到钥匙串中，按照提示输入私钥密码1ssh-add -K ~/.ssh/id_rsa 第二步:在.ssh文件夹下config文件中配置服务器属性,UseKeychain，AddKeysToAgent设置为YES如果没有该文件,就创建一个配置好以后 直接用 ssh name 就可以免密访问服务器啦1234567891011vim /home/jocelen/.ssh/config*添加内容Host name User root Hostname xxx.xxx.xx Port 23 PreferredAuthentications publickey IdentityFile ~/.ssh/id_rsa UseKeychain yes AddKeysToAgent config参数解释 Host #主机名 User #访问账户 Hostname #ip或域名 Port #端口 PreferredAuthentications #优先认证方式 这里填publickey IdentityFile #本地私钥地址 UseKeychain #是否使用钥匙串 AddKeysToAgent #是否添加到钥匙串]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[iOS导入Framework报错 Reason no suitable image found Did find]]></title>
     <url>%2Fposts%2F96bfefc8%2F</url>
     <content type="text"><![CDATA[合并Framework后,导入报错自己合并真机模拟器的SDK后,在导入测试项目的时候发现直接闪退了，报错如下：12345dyld: Library not loaded: @rpath/libswiftCore.dylib Referenced from: /Users/jocelen/Library/Developer/CoreSimulator/Devices/E5532504-D375-4FCC-81A5-A46EA31BCB48/data/Containers/Bundle/Application/4413D938-4427-4B4D-8032-44A48643A0C7/QuoteSDK-Demo.app/Frameworks/DZKJQuoteModule.framework/DZKJQuoteModule Reason: no suitable image found. Did find: /Users/jocelen/Library/Developer/CoreSimulator/Devices/E5532504-D375-4FCC-81A5-A46EA31BCB48/data/Containers/Bundle/Application/4413D938-4427-4B4D-8032-44A48643A0C7/QuoteSDK-Demo.app/Frameworks/DZKJQuoteModule.framework/Frameworks/libswiftCore.dylib: no matching architecture in universal wrapper(lldb) 解决如下Targets–&gt;General–&gt;Always Embed Swift Standard Libraries–&gt;YES]]></content>
@@ -46,17 +57,6 @@
       <tags>
         <tag>iOS</tag>
         <tag>Framework</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[MAC终端 SSH登陆 Enter passphrase for key]]></title>
-    <url>%2Fposts%2Ffbf618ca%2F</url>
-    <content type="text"><![CDATA[需求:SSH免密码登陆利用ssh-keygen -t rsa -b 4096 -C &quot;xxx@xxx.com&quot;生成公,私钥的时候设置私钥密码,导致ssh免登录设置完成后一直需要输入私钥密码，才能链接SSH服务端，非常不方便1Enter passphrase for key &apos;~/.ssh/id_rsa&apos;: 解决:第一步:将私钥添加到钥匙串中，按照提示输入私钥密码1ssh-add -K ~/.ssh/id_rsa 第二步:在.ssh文件夹下config文件中配置服务器属性,UseKeychain，AddKeysToAgent设置为YES如果没有该文件,就创建一个配置好以后 直接用 ssh name 就可以免密访问服务器啦1234567891011vim /home/jocelen/.ssh/config*添加内容Host name User root Hostname xxx.xxx.xx Port 23 PreferredAuthentications publickey IdentityFile ~/.ssh/id_rsa UseKeychain yes AddKeysToAgent config参数解释 Host #主机名 User #访问账户 Hostname #ip或域名 Port #端口 PreferredAuthentications #优先认证方式 这里填publickey IdentityFile #本地私钥地址 UseKeychain #是否使用钥匙串 AddKeysToAgent #是否添加到钥匙串]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>SSH</tag>
       </tags>
   </entry>
   <entry>
